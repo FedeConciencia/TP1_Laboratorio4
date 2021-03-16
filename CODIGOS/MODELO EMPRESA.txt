@@ -1,0 +1,160 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Empresa {
+    
+    //Variables de Clase:
+    
+    private int idEmpresa;
+    private String denominacion;
+    private String telefono;
+    private String horarioAtencion;
+    private String quienesSomos;
+    private double latitud;
+    private double longitud;
+    private String domicilio;
+    private String Email;
+    
+    
+    //Variables de Relacion:
+    
+    private List<Noticia> listaNoticia = new ArrayList<Noticia>();
+
+    public Empresa() {
+    }
+
+    public Empresa(int idEmpresa, String denominacion, String telefono, String horarioAtencion, String quienesSomos, double latitud, double longitud, String domicilio, String Email) {
+        this.idEmpresa = idEmpresa;
+        this.denominacion = denominacion;
+        this.telefono = telefono;
+        this.horarioAtencion = horarioAtencion;
+        this.quienesSomos = quienesSomos;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.domicilio = domicilio;
+        this.Email = Email;
+    }
+
+    public Empresa(String denominacion, String telefono, String horarioAtencion, String quienesSomos, double latitud, double longitud, String domicilio, String Email) {
+        this.denominacion = denominacion;
+        this.telefono = telefono;
+        this.horarioAtencion = horarioAtencion;
+        this.quienesSomos = quienesSomos;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.domicilio = domicilio;
+        this.Email = Email;
+    }
+    
+    
+     public Empresa(String denominacion, String telefono, String horarioAtencion, String quienesSomos, double latitud, double longitud, String domicilio, String Email, List<Noticia> listaNoticia) {
+        this.denominacion = denominacion;
+        this.telefono = telefono;
+        this.horarioAtencion = horarioAtencion;
+        this.quienesSomos = quienesSomos;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.domicilio = domicilio;
+        this.Email = Email;
+        this.listaNoticia = listaNoticia;
+    }
+    
+    
+
+    public int getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    public String getDenominacion() {
+        return denominacion;
+    }
+
+    public void setDenominacion(String denominacion) {
+        this.denominacion = denominacion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getHorarioAtencion() {
+        return horarioAtencion;
+    }
+
+    public void setHorarioAtencion(String horarioAtencion) {
+        this.horarioAtencion = horarioAtencion;
+    }
+
+    public String getQuienesSomos() {
+        return quienesSomos;
+    }
+
+    public void setQuienesSomos(String quienesSomos) {
+        this.quienesSomos = quienesSomos;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public List<Noticia> getListaNoticia() {
+        return listaNoticia;
+    }
+
+    public void setListaNoticia(List<Noticia> listaNoticia) {
+        this.listaNoticia = listaNoticia;
+    }
+    
+    
+
+    @Override
+    public String toString() {
+        return "IdEmpresa: " + idEmpresa + "\nDenominacion: " + denominacion + "\nTelefono: " + telefono + 
+                "\nHorarioAtencion: " + horarioAtencion + "\nQuienesSomos: " + quienesSomos + 
+                "\nLatitud: " + latitud + "\nLongitud: " + longitud + "\nDomicilio: " + domicilio + 
+                "\nEmail: " + Email;
+    }
+    
+    
+    
+    
+    
+   
+}

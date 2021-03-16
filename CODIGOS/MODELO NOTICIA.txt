@@ -1,0 +1,132 @@
+import java.util.Date;
+
+
+public class Noticia {
+    
+    
+    //Variables de Clase:
+    
+    private int idNoticia;
+    private String tituloNoticia;
+    private String resumenNoticia;
+    private String imagenNoticia;
+    private String contenidoHtml;
+    private char publicada;
+    private Date fechaPublicacion;
+    private int idEmpresa;
+    
+    
+    //Variable de Relacion:
+    
+    private Empresa empresa;
+
+    public Noticia() {
+    }
+
+    public Noticia(int idNoticia, String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, Date fechaPublicacion, int idEmpresa, Empresa empresa) {
+        this.idNoticia = idNoticia;
+        this.tituloNoticia = tituloNoticia;
+        this.resumenNoticia = resumenNoticia;
+        this.imagenNoticia = imagenNoticia;
+        this.contenidoHtml = contenidoHtml;
+        this.publicada = publicada;
+        this.fechaPublicacion = fechaPublicacion;
+        this.idEmpresa = idEmpresa;
+        this.empresa = empresa;
+    }
+
+    public Noticia(String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, Date fechaPublicacion, int idEmpresa, Empresa empresa) {
+        this.tituloNoticia = tituloNoticia;
+        this.resumenNoticia = resumenNoticia;
+        this.imagenNoticia = imagenNoticia;
+        this.contenidoHtml = contenidoHtml;
+        this.publicada = publicada;
+        this.fechaPublicacion = fechaPublicacion;
+        this.idEmpresa = idEmpresa;
+        this.empresa = empresa;
+    }
+
+    public int getIdNoticia() {
+        return idNoticia;
+    }
+
+    public void setIdNoticia(int idNoticia) {
+        this.idNoticia = idNoticia;
+    }
+
+    public String getTituloNoticia() {
+        return tituloNoticia;
+    }
+
+    public void setTituloNoticia(String tituloNoticia) {
+        this.tituloNoticia = tituloNoticia;
+    }
+
+    public String getResumenNoticia() {
+        return resumenNoticia;
+    }
+
+    public void setResumenNoticia(String resumenNoticia) {
+        this.resumenNoticia = resumenNoticia;
+    }
+
+    public String getImagenNoticia() {
+        return imagenNoticia;
+    }
+
+    public void setImagenNoticia(String imagenNoticia) {
+        this.imagenNoticia = imagenNoticia;
+    }
+
+    public String getContenidoHtml() {
+        return contenidoHtml;
+    }
+
+    public void setContenidoHtml(String contenidoHtml) {
+        this.contenidoHtml = contenidoHtml;
+    }
+
+    public char getPublicada() {
+        return publicada;
+    }
+
+    public void setPublicada(char publicada) {
+        this.publicada = publicada;
+    }
+
+    public Date getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public void setFechaPublicacion(Date fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public int getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    @Override
+    public String toString() {
+        return "IdNoticia: " + idNoticia + "\nTituloNoticia: " + tituloNoticia + "\nResumenNoticia: " + resumenNoticia 
+                + "\nImagenNoticia: " + imagenNoticia + "\nContenidoHtml: " + contenidoHtml + 
+                "\nPublicada: " + publicada + "\nFechaPublicacion: " + fechaPublicacion + "\nIdEmpresa: " + idEmpresa;
+    }
+    
+    
+    
+   
+    
+}

@@ -1,0 +1,311 @@
+import java.sql.PreparedStatement;
+import Conexion.Conexion;
+import Modelo.Empresa;
+import static java.lang.System.out;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+
+
+public class ControladorEmpresa {
+    
+
+
+    public static void insertarEmpresa(Empresa empresa) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("INSERT INTO empresa (denominacion, telefono, horarioAtencion, quienesSomos, latitud, longitud, domicilio, email) VALUES (?,?,?,?,?,?,?,?)");
+
+            ps.setString(1, empresa.getDenominacion());
+            ps.setString(2, empresa.getTelefono());
+            ps.setString(3, empresa.getHorarioAtencion());
+            ps.setString(4, empresa.getQuienesSomos());
+            ps.setDouble(5, empresa.getLatitud());
+            ps.setDouble(6, empresa.getLongitud());
+            ps.setString(7, empresa.getDomicilio());
+            ps.setString(8, empresa.getEmail());
+          
+            //Ejecutamos el comando y mandamos los datos al sistema:
+            int resultado = ps.executeUpdate();
+
+            if (resultado > 0) {
+                
+                System.out.println("El Registro fue insertado con exito a la Base de Datos.");
+                //JOptionPane.showMessageDialog(null, "El Registro fue insertado con exito a la Base de Datos.");
+                //out.print("<script>alert('El Registro fue insertado con exito a la Base de Datos.');<script>");
+
+            } else {
+                
+                System.out.println("Error al intentar insertar el registro.");
+                //JOptionPane.showMessageDialog(null, "Error al intentar insertar el registro.");
+                //out.print("<script>alert('Error al intentar insertar el registro.');<script>");
+
+            }
+
+            conexion.close(); //cerramos la conexion.
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+            //out.print("<script>alert('Error de Conexion.');<script>");
+        } finally {
+
+            try {
+                ps.close();
+
+            } catch (SQLException ex) {
+
+                System.err.println("Error. " + ex);
+                //out.print("<script>alert('Error de Conexion.');<script>");
+            }
+
+        }
+    }
+
+    public void actualizarEmpresa(String denominacion, String telefono, String horarioAtencion, String quienesSomos, double latitud, double longitud, String domicilio, String email, int id) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("UPDATE empresa SET denominacion = ?, telefono = ?, horarioAtencion = ?, quienesSomos = ?, latitud = ?, longitud = ?, domicilio = ?, email = ?  WHERE idEmpresa = ? ");
+
+            ps.setString(1, denominacion);
+            ps.setString(2, telefono);
+            ps.setString(3, horarioAtencion);
+            ps.setString(4, quienesSomos);
+            ps.setDouble(5, latitud);
+            ps.setDouble(6, longitud);
+            ps.setString(7, domicilio);
+            ps.setString(8, email);
+            ps.setInt(9, id);
+            
+            
+
+            //Ejecutamos el comando y mandamos los datos al sistema:
+            int resultado = ps.executeUpdate();
+
+            if (resultado > 0) {
+
+                 System.out.println("El Registro fue actualizado con exito a la Base de Datos.");
+                //JOptionPane.showMessageDialog(null, "El Registro fue modificado con exito a la Base de Datos.");
+
+            } else {
+                
+                System.out.println("Error al intentar actualizar el registro.");
+                //JOptionPane.showMessageDialog(null, "Error al intentar modificar el registro.");
+
+            }
+
+            conexion.close(); //cerramos la conexion.
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+                ps.close();
+
+            } catch (SQLException ex) {
+                
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+    }
+
+    public static void eliminarEmpresa(int id) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("DELETE FROM empresa WHERE idEmpresa = ?");
+
+            ps.setInt(1, id); //Se puede usar indicando el primer signo de pregunta del qwery y alojar la variable
+
+            //Ejecutamos el comando y mandamos los datos al sistema:
+            int resultado = ps.executeUpdate();
+
+            if (resultado > 0) {
+
+                  System.out.println("El Registro fue eliminado con exito a la Base de Datos.");
+                //JOptionPane.showMessageDialog(null, "El Registro fue eliminado con exito a la Base de Datos.");
+
+            } else {
+                
+                System.out.println("Error al intentar eliminar el registro.");
+                //JOptionPane.showMessageDialog(null, "Error al intentar eliminar el registro.");
+
+            }
+
+            conexion.close(); //cerramos la conexion.
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+                ps.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+    }
+
+    public static Empresa buscarOneEmpresa(int id) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Empresa empresa = null;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT idEmpresa, denominacion, telefono, horarioAtencion, quienesSomos, latitud, longitud, domicilio, email FROM empresa WHERE idEmpresa = ?");
+
+            ps.setInt(1, id); //pasamos el id parametro y se ingresa en el ? del query
+
+            rs = ps.executeQuery();  //Ejecutamos el Resulset y executeQuery cuando obtenemos algo de la base de datos.
+
+            if (rs.next()) {  //si nos devuelve un dato true
+
+                int idEmpresa = rs.getInt(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String denominacion = rs.getString(2);
+                String telefono = rs.getString(3);
+                String horarioAtencion = rs.getString(4);
+                String quienesSomos = rs.getString(5);
+                double latitud = rs.getDouble(6);
+                double longitud = rs.getDouble(7);
+                String domicilio = rs.getString(8);
+                String email = rs.getString(9);
+                 
+
+                empresa = new Empresa(idEmpresa, denominacion, telefono, horarioAtencion, quienesSomos, latitud, longitud, domicilio, email); //Creamos el objeto con los datos Obtenidos
+
+                System.out.println("El Registro fue encontrado con exito.");
+                //JOptionPane.showMessageDialog(null, "El Registro fue encontrado con exito.");
+
+            } else {
+
+                System.out.println("El Registro no fue encontrado en la Base de Datos.");
+                //JOptionPane.showMessageDialog(null, "El Registro no fue encontrado en la Base de Datos.");
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return empresa; //devolvemos el alumno encontrado
+    }
+
+    public static List<Empresa> buscarAllEmpresa() {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Empresa empresa = null;
+        List<Empresa> listaEmpresa = new ArrayList<Empresa>();
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT idPersona, nombre, dni, domicilio FROM empresa");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                int idEmpresa = rs.getInt(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String denominacion = rs.getString(2);
+                String telefono = rs.getString(3);
+                String horarioAtencion = rs.getString(4);
+                String quienesSomos = rs.getString(5);
+                double latitud = rs.getDouble(6);
+                double longitud = rs.getDouble(7);
+                String domicilio = rs.getString(8);
+                String email = rs.getString(9);
+
+                empresa = new Empresa(idEmpresa, denominacion, telefono, horarioAtencion, quienesSomos, latitud, longitud, domicilio, email); //Creamos el objeto con los datos Obtenidos
+
+                listaEmpresa.add(empresa);
+
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return listaEmpresa; //devolvemos la lista de alumnos encontrado
+
+    }
+    
+    
+    
+}
