@@ -75,7 +75,7 @@ public class ControladorEmpresa {
         }
     }
 
-    public void actualizarEmpresa(String denominacion, String telefono, String horarioAtencion, String quienesSomos, double latitud, double longitud, String domicilio, String email, int id) {
+    public static void actualizarEmpresa(String denominacion, String telefono, String horarioAtencion, String quienesSomos, double latitud, double longitud, String domicilio, String email, int id) {
 
         Connection conexion = null;
         Conexion con = new Conexion();
@@ -261,7 +261,7 @@ public class ControladorEmpresa {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("SELECT idPersona, nombre, dni, domicilio FROM empresa");
+            ps = conexion.prepareStatement("SELECT idEmpresa, denominacion, telefono, horarioAtencion, quienesSomos, latitud, longitud, domicilio, email FROM empresa");
 
             rs = ps.executeQuery();
 

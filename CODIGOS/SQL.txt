@@ -1,0 +1,10 @@
+use tp1_laboratorio4;
+
+SELECT * FROM empresa;
+SELECT * FROM noticia;
+
+DELETE FROM noticia;
+ALTER TABLE noticia AUTO_INCREMENT = 1;
+
+DELETE FROM empresa;
+ALTER TABLE empresa AUTO_INCREMENT = 1;

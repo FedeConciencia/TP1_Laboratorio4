@@ -1,3 +1,4 @@
+mport java.time.LocalDate;
 import java.util.Date;
 
 
@@ -12,7 +13,7 @@ public class Noticia {
     private String imagenNoticia;
     private String contenidoHtml;
     private char publicada;
-    private Date fechaPublicacion;
+    private LocalDate fechaPublicacion;
     private int idEmpresa;
     
     
@@ -23,7 +24,7 @@ public class Noticia {
     public Noticia() {
     }
 
-    public Noticia(int idNoticia, String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, Date fechaPublicacion, int idEmpresa, Empresa empresa) {
+    public Noticia(int idNoticia, String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, LocalDate fechaPublicacion, int idEmpresa, Empresa empresa) {
         this.idNoticia = idNoticia;
         this.tituloNoticia = tituloNoticia;
         this.resumenNoticia = resumenNoticia;
@@ -35,7 +36,7 @@ public class Noticia {
         this.empresa = empresa;
     }
 
-    public Noticia(String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, Date fechaPublicacion, int idEmpresa, Empresa empresa) {
+    public Noticia(String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, LocalDate fechaPublicacion, int idEmpresa, Empresa empresa) {
         this.tituloNoticia = tituloNoticia;
         this.resumenNoticia = resumenNoticia;
         this.imagenNoticia = imagenNoticia;
@@ -45,6 +46,29 @@ public class Noticia {
         this.idEmpresa = idEmpresa;
         this.empresa = empresa;
     }
+
+    public Noticia(int idNoticia, String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, LocalDate fechaPublicacion, int idEmpresa) {
+        this.idNoticia = idNoticia;
+        this.tituloNoticia = tituloNoticia;
+        this.resumenNoticia = resumenNoticia;
+        this.imagenNoticia = imagenNoticia;
+        this.contenidoHtml = contenidoHtml;
+        this.publicada = publicada;
+        this.fechaPublicacion = fechaPublicacion;
+        this.idEmpresa = idEmpresa;
+    }
+    
+
+    public Noticia(String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, LocalDate fechaPublicacion, int idEmpresa) {
+        this.tituloNoticia = tituloNoticia;
+        this.resumenNoticia = resumenNoticia;
+        this.imagenNoticia = imagenNoticia;
+        this.contenidoHtml = contenidoHtml;
+        this.publicada = publicada;
+        this.fechaPublicacion = fechaPublicacion;
+        this.idEmpresa = idEmpresa;
+    }
+
 
     public int getIdNoticia() {
         return idNoticia;
@@ -94,11 +118,11 @@ public class Noticia {
         this.publicada = publicada;
     }
 
-    public Date getFechaPublicacion() {
+    public LocalDate getFechaPublicacion() {
         return fechaPublicacion;
     }
 
-    public void setFechaPublicacion(Date fechaPublicacion) {
+    public void setFechaPublicacion(LocalDate fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
 

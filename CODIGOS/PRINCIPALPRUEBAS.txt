@@ -1,0 +1,136 @@
+public static void main(String[] args) {
+        
+        /*
+        
+        //Prueba Insertar Empresas BD:
+        
+        Empresa empresa1 = new Empresa("Diario ElOtro SA", "422332632", "Lunes a Viernes", "Una empresa de periodismo Alternativo", 21.3, 10.9, "Las Heras 2020", "elotro@gmail.com");
+        
+        Empresa empresa2 = new Empresa("Diario Uno SA", "424324632", "Lunes a Domingos", "Una empresa de Periodismo Facho", 11.5, 31.4, "Godoy Cruz 10", "diarioUno@gmail.com");
+        
+        Empresa empresa3 = new Empresa("Diario Los Andes SA", "435624632", "Lunes a Miercoles", "Una empresa de Mercenarios Informativos al servicio del Poder", 10.2, 9.9, "Marias 21", "losAndes@gmail.com");
+        
+        
+        ControladorEmpresa.insertarEmpresa(empresa1);
+        
+        ControladorEmpresa.insertarEmpresa(empresa2);
+        
+        ControladorEmpresa.insertarEmpresa(empresa3);
+        
+        //Prueba Insertar Noticias BD:
+        
+        Noticia noticia1 = new Noticia("Gano Platense", "El calamar vence 2-0 a River Plate", "imagen", "contenido HTML", 'Y',  LocalDate.of(2020,6,6), 1);
+        
+        Noticia noticia2 = new Noticia("Gano Boca", "Boca vence 11-0 a San Lorenzo", "imagen", "contenido HTML", 'Y',  LocalDate.of(2021,2,5), 2);
+        
+        Noticia noticia3 = new Noticia("Gano Gimnasia", "Gimnasia vence 16-0 a Independiente", "imagen", "contenido HTML", 'Y',  LocalDate.of(2019,1,7), 3);
+        
+        
+        ControladorNoticia.insertarNoticia(noticia1);
+        
+        ControladorNoticia.insertarNoticia(noticia2);
+        
+        ControladorNoticia.insertarNoticia(noticia3);
+        
+        */
+        
+        /*
+        
+        //Prueba Actualizar Empresas BD:
+        
+        ControladorEmpresa.actualizarEmpresa("Diario ElOtro SA", "42567282", "Lunes a Viernes", "Periodismo Alternativo", 22.3, 11.9, "Olascuaga 2020", "elotro@tahoo.com",1);
+        
+        
+        //Prueba Actualizar Noticia BD:
+        
+        ControladorNoticia.actualizarNoticia("Gano San Lorenzo", "San Lorenzo vence 16-0 a Independiente", "imagen", "contenido HTML", 'Y',  LocalDate.of(2018,5,5), 3,3);
+        
+        */
+        
+        /*
+        
+        //Prueba BuscarOne Empresas BD:
+        
+        Empresa empresa = ControladorEmpresa.buscarOneEmpresa(1);
+        
+        System.out.println("EMPRESA OBTENIDAD DE BD: ");
+        
+        System.out.println("");
+        
+        System.out.println(empresa.toString());
+        
+        System.out.println("");
+        
+        //Prueba BuscarOne Noticia BD:
+        
+        Noticia noticia = ControladorNoticia.buscarOneNoticia(1);
+        
+        System.out.println("NOTICIA OBTENIDAD DE BD: ");
+        
+        System.out.println("");
+        
+        System.out.println(noticia.toString());
+        
+        System.out.println("");
+        
+        */
+        
+        /*
+        
+        //Prueba BuscarAll Empresas BD:
+        
+        System.out.println("EMPRESAS OBTENIDAS DE LA BD: ");
+        
+        List<Empresa> listaEmpresa = new ArrayList<Empresa>();
+        
+        listaEmpresa = ControladorEmpresa.buscarAllEmpresa();
+        
+        System.out.println("");
+        
+        for(Empresa item: listaEmpresa){
+        
+            System.out.println(item.toString());
+            System.out.println("");
+        }
+        
+        System.out.println("");
+        
+        
+        
+        //Prueba BuscarAll Noticia BD:
+        
+        System.out.println("NOTICIAS OBTENIDAS DE LA BD: ");
+
+        
+        List<Noticia> listaNoticia = new ArrayList<Noticia>();
+        
+        listaNoticia = ControladorNoticia.buscarAllNoticia();
+        
+        System.out.println("");
+        
+        for(Noticia item: listaNoticia){
+        
+            System.out.println(item.toString());
+            System.out.println("");
+        }
+        
+        System.out.println("");
+        
+        */
+        
+        /*
+        
+        //Prueba Eliminar Empresa BD:
+        
+        ControladorEmpresa.eliminarEmpresa(3);
+        
+        
+        
+        //Prueba Eliminar Noticia BD:
+        
+        ControladorNoticia.eliminarNoticia(3);
+
+        */
+        
+    }
+    

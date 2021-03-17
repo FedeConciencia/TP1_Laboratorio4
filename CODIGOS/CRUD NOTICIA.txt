@@ -1,12 +1,14 @@
 import Conexion.Conexion;
 import Modelo.Noticia;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
+import java.time.LocalDate;
+
 
 
 public class ControladorNoticia {
@@ -25,14 +27,14 @@ public class ControladorNoticia {
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
             ps = conexion.prepareStatement("INSERT INTO noticia (tituloNoticia, resumenNoticia, imagenNoticia, contenidoHtml, publicada, fechaPublicacion, idEmpresa) VALUES (?,?,?,?,?,?,?)");
-
+            
             ps.setString(1, noticia.getTituloNoticia());
             ps.setString(2, noticia.getResumenNoticia());
             ps.setString(3, noticia.getImagenNoticia());
             ps.setString(4, noticia.getContenidoHtml());
-            ps.setByte(5, (byte)noticia.getPublicada());
-            ps.setDate(6, (Date)noticia.getFechaPublicacion());
-            ps.setInt(7, noticia.getIdNoticia());
+            ps.setString(5, String.valueOf(noticia.getPublicada()));
+            ps.setDate(6, Date.valueOf(noticia.getFechaPublicacion())); //Casteamos un LocalDate a sql.Date
+            ps.setInt(7, noticia.getIdEmpresa());
             
           
             //Ejecutamos el comando y mandamos los datos al sistema:
@@ -72,7 +74,7 @@ public class ControladorNoticia {
         }
     }
 
-    public void actualizarNoticia(String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, Date fechaPublicacion, int idEmpresa, int id) {
+    public static void actualizarNoticia(String tituloNoticia, String resumenNoticia, String imagenNoticia, String contenidoHtml, char publicada, LocalDate fechaPublicacion, int idEmpresa, int id) {
 
         Connection conexion = null;
         Conexion con = new Conexion();
@@ -89,8 +91,8 @@ public class ControladorNoticia {
             ps.setString(2, resumenNoticia);
             ps.setString(3, imagenNoticia);
             ps.setString(4, contenidoHtml);
-            ps.setByte(5, (byte)publicada);
-            ps.setDate(6, fechaPublicacion);
+            ps.setString(5, String.valueOf(publicada));  // casteamos el Char a String
+            ps.setDate(6, Date.valueOf(fechaPublicacion)); //Casteamos un LocalDate a sql.Date
             ps.setInt(7, idEmpresa);
             ps.setInt(8, id);
            
@@ -206,8 +208,8 @@ public class ControladorNoticia {
                 String resumenNoticia = rs.getString(3);
                 String imagenNoticia = rs.getString(4);
                 String contenidoHtml = rs.getString(5);
-                char publicada = (char)rs.getByte(6);
-                Date fechaPublicacion = rs.getDate(7);
+                char publicada = (rs.getString(6)).charAt(0);  //Casteamos el String BD a Char
+                LocalDate fechaPublicacion = (rs.getDate(7)).toLocalDate();   //Casteamos sql.Date a util.Date
                 int idEmpresa = rs.getInt(8);
                 
 
@@ -268,8 +270,8 @@ public class ControladorNoticia {
                 String resumenNoticia = rs.getString(3);
                 String imagenNoticia = rs.getString(4);
                 String contenidoHtml = rs.getString(5);
-                char publicada = (char)rs.getByte(6);
-                Date fechaPublicacion = rs.getDate(7);
+                char publicada = (rs.getString(6)).charAt(0); //Casteamos el String BD a Char
+                LocalDate fechaPublicacion = (rs.getDate(7)).toLocalDate(); 
                 int idEmpresa = rs.getInt(8);
                 
 
@@ -305,3 +307,7 @@ public class ControladorNoticia {
     
     
 }
+    
+    
+    
+
