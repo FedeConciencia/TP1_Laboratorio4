@@ -33,7 +33,7 @@ CREATE TABLE `empresa` (
   `domicilio` varchar(256) NOT NULL,
   `email` varchar(75) NOT NULL,
   PRIMARY KEY (`idEmpresa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `empresa` (
 
 LOCK TABLES `empresa` WRITE;
 /*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
+INSERT INTO `empresa` VALUES (1,'Diario ElOtro SA','42567282','Lunes a Viernes','Periodismo Alternativo',22.30,11.90,'Olascuaga 2020','elotro@tahoo.com'),(2,'Diario Uno SA','424324632','Lunes a Domingos','Una empresa de Periodismo Facho',11.50,31.40,'Godoy Cruz 10','diarioUno@gmail.com');
 /*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,13 +59,13 @@ CREATE TABLE `noticia` (
   `resumenNoticia` varchar(1024) NOT NULL,
   `imagenNoticia` varchar(128) NOT NULL,
   `contenidoHtml` mediumtext NOT NULL,
-  `publicada` char(1) NOT NULL,
+  `publicada` varchar(1) NOT NULL,
   `fechaPublicacion` date NOT NULL,
   `idEmpresa` int NOT NULL,
   PRIMARY KEY (`idNoticia`),
   KEY `idEmpresa_FK1_idx` (`idEmpresa`),
   CONSTRAINT `idEmpresa_FK1` FOREIGN KEY (`idEmpresa`) REFERENCES `empresa` (`idEmpresa`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,6 +74,7 @@ CREATE TABLE `noticia` (
 
 LOCK TABLES `noticia` WRITE;
 /*!40000 ALTER TABLE `noticia` DISABLE KEYS */;
+INSERT INTO `noticia` VALUES (1,'Gano Platense','El calamar vence 2-0 a River Plate','imagen','contenido HTML','Y','2020-06-06',1),(2,'Gano Boca','Boca vence 11-0 a San Lorenzo','imagen','contenido HTML','Y','2021-02-05',2);
 /*!40000 ALTER TABLE `noticia` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -85,4 +87,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-16 10:17:16
+-- Dump completed on 2021-03-17 19:34:37
