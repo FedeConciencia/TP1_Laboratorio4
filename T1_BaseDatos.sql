@@ -28,12 +28,12 @@ CREATE TABLE `empresa` (
   `telefono` varchar(50) NOT NULL,
   `horarioAtencion` varchar(256) NOT NULL,
   `quienesSomos` varchar(1024) NOT NULL,
-  `latitud` decimal(10,2) NOT NULL,
-  `longitud` decimal(10,2) NOT NULL,
+  `latitud` double NOT NULL,
+  `longitud` double NOT NULL,
   `domicilio` varchar(256) NOT NULL,
   `email` varchar(75) NOT NULL,
   PRIMARY KEY (`idEmpresa`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `empresa` (
 
 LOCK TABLES `empresa` WRITE;
 /*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
-INSERT INTO `empresa` VALUES (1,'Diario ElOtro SA','42567282','Lunes a Viernes','Periodismo Alternativo',22.30,11.90,'Olascuaga 2020','elotro@tahoo.com'),(2,'Diario Uno SA','424324632','Lunes a Domingos','Una empresa de Periodismo Facho',11.50,31.40,'Godoy Cruz 10','diarioUno@gmail.com');
+INSERT INTO `empresa` VALUES (8,'Diario ElOtro SA','422332632','Lunes a Viernes 8Hs a 18Hs','Una empresa de periodismo Alternativo',-32.8689239,-68.8154645,'Las Heras 2020','elotro@gmail.com'),(9,'Diario Uno SA','424324632','Lunes a Sabados 9Hs a 17hs','Una empresa que Informa',-32.8912063,-68.8567977,'Godoy Cruz 10','diarioUno@gmail.com'),(10,'Diario Los Andes SA','435624632','Lunes a jueves 10Hs a 17Hs','Una empresa pionera del Periodismo en Mendoza',-32.9507705,-68.8361425,'Marias 21','losAndes@gmail.com');
 /*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +65,7 @@ CREATE TABLE `noticia` (
   PRIMARY KEY (`idNoticia`),
   KEY `idEmpresa_FK1_idx` (`idEmpresa`),
   CONSTRAINT `idEmpresa_FK1` FOREIGN KEY (`idEmpresa`) REFERENCES `empresa` (`idEmpresa`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +74,7 @@ CREATE TABLE `noticia` (
 
 LOCK TABLES `noticia` WRITE;
 /*!40000 ALTER TABLE `noticia` DISABLE KEYS */;
-INSERT INTO `noticia` VALUES (1,'Gano Platense','El calamar vence 2-0 a River Plate','imagen','contenido HTML','Y','2020-06-06',1),(2,'Gano Boca','Boca vence 11-0 a San Lorenzo','imagen','contenido HTML','Y','2021-02-05',2);
+INSERT INTO `noticia` VALUES (10,'Gano Platense','El calamar vence 2-0 a River Plate','imagenes/platense.jpg','contenido HTML','Y','2020-06-06',8),(11,'Gano Boca Juniors','Boca vence 11-0 a San Lorenzo','imagenes/boca.jpg','<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Contenido ingresado desde el editor de texto.</p>\r\n</body>\r\n</html>','Y','2021-02-05',8),(12,'Gano Gimnasia','Gimnasia vence 16-0 a Independiente','imagenes/gimnasia.jpg','contenido HTML','Y','2019-01-07',8);
 /*!40000 ALTER TABLE `noticia` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -87,4 +87,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-17 19:34:37
+-- Dump completed on 2021-03-28 16:51:28
